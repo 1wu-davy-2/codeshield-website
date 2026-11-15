@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "product": "java",
+  "stage": "before",
+  "demo": true,
+  "project": {
+    "id": "spring-boot-demo",
+    "name": "spring-boot-demo",
+    "runtime": "JDK 17 · Spring Boot 3.2.12",
+    "root": "spring-boot-demo",
+    "container": "dir",
+    "command": "java -jar javashield.jar build -i demo-1.0.0.jar -o dist/demo-1.0.0.jar -e 2028-12-31",
+    "secretOmitted": true
+  },
+  "generatedAt": "2026-11-14T03:26:55Z",
+  "files": [
+    {
+      "id": "pom.xml",
+      "path": "pom.xml",
+      "kind": "config",
+      "language": "xml",
+      "bytes": 1963,
+      "sha256": "36d0e7432bca162371758656467396ece33381af680f906741cd589c5c91deb4",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n  <modelVersion>4.0.0</modelVersion>\n\n  <parent>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-parent</artifactId>\n    <version>3.2.12</version>\n    <relativePath/>\n  </parent>\n\n  <groupId>com.example</groupId>\n  <artifactId>demo</artifactId>\n  <version>1.0.0</version>\n  <name>javashield-spring-boot-demo</name>\n\n  <properties>\n    <java.version>17</java.version>\n  </properties>\n\n  <dependencies>\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-actuator</artifactId>\n    </dependency>\n  </dependencies>\n\n  <build>\n    <plugins>\n      <plugin>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-maven-plugin</artifactId>\n      </plugin>\n    </plugins>\n  </build>\n\n  <profiles>\n    <profile>\n      <id>javashield</id>\n      <build>\n        <plugins>\n          <plugin>\n            <groupId>com.javashield</groupId>\n            <artifactId>javashield-maven-plugin</artifactId>\n            <version>0.1.0-SNAPSHOT</version>\n            <executions>\n              <execution>\n                <id>protect</id>\n                <phase>package</phase>\n                <goals>\n                  <goal>protect</goal>\n                </goals>\n              </execution>\n            </executions>\n            <configuration>\n              <customer>Spring Regression</customer>\n              <expire>2028-12-31</expire>\n            </configuration>\n          </plugin>\n        </plugins>\n      </build>\n    </profile>\n  </profiles>\n</project>\n",
+      "encoding": "text"
+    },
+    {
+      "id": "src/main/resources/application.yml",
+      "path": "src/main/resources/application.yml",
+      "kind": "config",
+      "language": "yaml",
+      "bytes": 233,
+      "sha256": "d8bfcbd3ca0e6e8f3807050a0c52192616b18c8cb65b110d2693a13c14bb41d2",
+      "content": "server:\n  port: 18080\n\ndemo:\n  brand: acme-2026\n  retries: 5\n\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: health,beans,info\n  endpoint:\n    health:\n      show-details: always\n\nlogging:\n  level:\n    root: warn\n\n",
+      "encoding": "text"
+    },
+    {
+      "id": "src/main/java/com/example/demo/DemoApplication.java",
+      "path": "src/main/java/com/example/demo/DemoApplication.java",
+      "kind": "source",
+      "language": "java",
+      "bytes": 425,
+      "sha256": "fd1e12fa87917653b0e60ccf818d6f92a89d64d3780bbdc0cf4670e0c1ffecb9",
+      "content": "package com.example.demo;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\nimport org.springframework.boot.context.properties.ConfigurationPropertiesScan;\n\n@SpringBootApplication\n@ConfigurationPropertiesScan\npublic class DemoApplication {\n\n    public static void main(String[] args) {\n        SpringApplication.run(DemoApplication.class, args);\n    }\n}\n",
+      "encoding": "text"
+    },
+    {
+      "id": "src/main/java/com/example/demo/DemoProperties.java",
+      "path": "src/main/java/com/example/demo/DemoProperties.java",
+      "kind": "source",
+      "language": "java",
+      "bytes": 530,
+      "sha256": "fbf83cbeeeb75d49ba8409d6e490e6b8c92ca8d8d27f7972032a55b9f3765f8e",
+      "content": "package com.example.demo;\n\nimport org.springframework.boot.context.properties.ConfigurationProperties;\n\n@ConfigurationProperties(prefix = \"demo\")\npublic class DemoProperties {\n\n    private String brand = \"default-brand\";\n    private int retries = 3;\n\n    public String getBrand() {\n        return brand;\n    }\n\n    public void setBrand(String brand) {\n        this.brand = brand;\n    }\n\n    public int getRetries() {\n        return retries;\n    }\n\n    public void setRetries(int retries) {\n        this.retries = retries;\n    }\n}\n",
+      "encoding": "text"
+    },
+    {
+      "id": "src/main/java/com/example/demo/GreetingService.java",
+      "path": "src/main/java/com/example/demo/GreetingService.java",
+      "kind": "source",
+      "language": "java",
+      "bytes": 751,
+      "sha256": "893ca8c1e5b52a6c69a485940f1f510f43d72335e470cd18650d68324cddddd3",
+      "content": "package com.example.demo;\n\nimport org.springframework.stereotype.Service;\n\n@Service\npublic class GreetingService {\n\n    /** Deliberately secret looking, to prove the stub does not leak constants. */\n    private static final String INTERNAL_SALT = \"internal-salt-9f3a\";\n\n    private final DemoProperties properties;\n\n    public GreetingService(DemoProperties properties) {\n        this.properties = properties;\n    }\n\n    public String greet(String name) {\n        return \"hello, \" + name + \" from \" + properties.getBrand();\n    }\n\n    public int retries() {\n        return properties.getRetries();\n    }\n\n    public String saltFingerprint() {\n        return INTERNAL_SALT.substring(0, 8) + \"-\" + Integer.toHexString(INTERNAL_SALT.hashCode());\n    }\n}\n",
+      "encoding": "text"
+    },
+    {
+      "id": "src/main/java/com/example/demo/HelloController.java",
+      "path": "src/main/java/com/example/demo/HelloController.java",
+      "kind": "source",
+      "language": "java",
+      "bytes": 988,
+      "sha256": "867fa85c957c4d140e669bcc602fd4a05e6c372db44b49b426cc7d72b1f5b8f3",
+      "content": "package com.example.demo;\n\nimport java.util.LinkedHashMap;\nimport java.util.Map;\n\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\n@RequestMapping(\"/api\")\npublic class HelloController {\n\n    private final GreetingService service;\n\n    public HelloController(GreetingService service) {\n        this.service = service;\n    }\n\n    @GetMapping(\"/hello\")\n    public Map<String, Object> hello(@RequestParam(defaultValue = \"world\") String name) {\n        Map<String, Object> body = new LinkedHashMap<String, Object>();\n        body.put(\"message\", service.greet(name));\n        body.put(\"retries\", service.retries());\n        body.put(\"salt\", service.saltFingerprint());\n        return body;\n    }\n\n    @GetMapping(\"/ping\")\n    public String ping() {\n        return \"pong\";\n    }\n}\n",
+      "encoding": "text"
+    }
+  ]
+}
