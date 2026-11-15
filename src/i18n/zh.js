@@ -1,0 +1,305 @@
+const zh = {
+  meta: {
+    title: "CodeShield — Python 与 Java 源码保护与授权交付",
+    description: "CodeShield 以构建期加密、运行期解密与 Ed25519 签名许可证，为 Python 与 Java 应用提供可交付的代码保护。14 天免费试用。"
+  },
+  a11y: {
+    skip: "跳到主要内容"
+  },
+  common: {
+    primaryNav: "主导航",
+    mobileNav: "移动导航",
+    language: "语言",
+    themeToggle: "切换深色 / 浅色主题",
+    copyCommand: "复制命令",
+    menu: "打开菜单",
+    close: "关闭",
+    backToTop: "返回顶部"
+  },
+  nav: {
+    product: "产品",
+    capabilities: "能力",
+    how: "工作原理",
+    security: "安全边界",
+    pricing: "定价",
+    faq: "常见问题",
+    trial: "免费试用"
+  },
+  hero: {
+    badge: "Python × Java · 构建期加密 · 运行期解密",
+    title1: "交付产品，",
+    title2: "不交付源码。",
+    lead: "CodeShield 为 Python 与 Java 应用提供同一套构建期加密、运行期解密与 Ed25519 签名授权体系。类与模块在磁盘上始终是密文，许可证独立签发——续期只需替换一个文件。",
+    ctaPrimary: "开始 14 天免费试用",
+    ctaSecondary: "查看执行流程",
+    trust1: "无需信用卡",
+    trust2: "本地离线构建",
+    trust3: "5 分钟接入",
+    terminalTitle: "codeshield · protected build",
+    fact1: "无 Agent → 立即失败",
+    fact2: "每类独立密钥",
+    fact3: "运行期零依赖"
+  },
+  stats: {
+    s1: { label: "密码套件", note: "AES-GCM · ChaCha20-Poly1305 · ChaCha20+HMAC" },
+    s2: { label: "体积开销", note: "先压缩再加密，实测 jar 膨胀" },
+    s3: { label: "自动化测试", note: "覆盖加密、授权与框架回归" },
+    s4: { label: "离线运行", note: "运行期不依赖在线服务" }
+  },
+  proof: {
+    label: "已在真实技术栈上验证",
+    note: "Spring Boot 3.2 fat jar 回归通过：组件扫描、依赖注入、配置绑定、Actuator 全部正常。"
+  },
+  why: {
+    eyebrow: "为什么选择 CodeShield",
+    title: "加密只是起点，交付才是终点。",
+    lead: "大多数工具止步于混淆或加密。CodeShield 把密钥体系、许可证、签发、续期与试用转化做成一条完整链路——让受保护软件真正可以卖、可以续、可以审计。",
+    c1: { title: "构建期加密", desc: "源码与字节码在构建时封装为 AEAD 密文，磁盘上不留下可读逻辑。" },
+    c2: { title: "两级许可证", desc: "工具授权决定谁能构建；产物许可证决定软件能在哪台机器、运行到什么时候。" },
+    c3: { title: "离线优先", desc: "运行期本地验签与解密；企业版支持完全离线的激活与响应。" },
+    c4: { title: "零改造接入", desc: "Java 内嵌 Agent 与 Launcher-Agent-Class；Maven 只需一个 profile。Python 一条命令。" },
+    c5: { title: "框架友好", desc: "元数据 stub 保留注解与签名，Spring、MyBatis、Swagger、JPA 扫描不受影响。" },
+    c6: { title: "跨语言统一", desc: "Python 与 Java 共用许可证字段与指纹算法，一份授权解锁双目标。" }
+  },
+  product: {
+    eyebrow: "双引擎",
+    title: "Python 与 Java，一套交付体系。",
+    lead: "两个引擎共享信封格式、许可证字段与机器指纹算法。同一套签发后台，同一份工具授权，覆盖两种运行时。",
+    tabsAria: "选择运行时",
+    pythonDesc: "把 Django / Flask 项目模块加密为不可读的 stub，由受保护运行时按需解密。输出可直接部署的副本，源码不随交付流出。",
+    pythonB1: "面向 CPython 3.12，Django 项目完整验证",
+    pythonB2: "三种密码套件，支持原生运行时（Pro）",
+    pythonB3: "产物许可证支持到期、宽限与机器绑定",
+    pythonB4: "一条命令生成受保护副本与许可证",
+    pythonNote: "示例：48 个模块 · 2.0 MB · 12.6 秒",
+    javaDesc: "把业务 class 加密为密文 sidecar，保留元数据 stub。java -jar 自动加载内嵌 Agent，Spring Boot 无需任何启动参数。",
+    javaB1: "stub / in-place 两种模式",
+    javaB2: "JDK 8–21 目标字节码，已验证 Boot 3.2",
+    javaB3: "续期只替换 jshield.lic，不重新打包",
+    javaB4: "Maven 插件零改造接入",
+    javaNote: "示例：1,284 个类 · Boot 3.2 · 255 个 Bean"
+  },
+  how: {
+    eyebrow: "工作原理",
+    title: "从源码到黑盒，四步完成。",
+    lead: "加密在构建机上完成，私钥始终留在你手里。运行期只做一次验签与一次解密。",
+    s1: { title: "扫描与压缩", desc: "识别业务模块与 class，跳过依赖与 module-info；先 deflate 再加密，控制体积。" },
+    s2: { title: "AEAD 封装", desc: "每个类独立密钥，AAD 绑定构建 ID 与类名；搬运或移植密文立即失败。" },
+    s3: { title: "签名清单", desc: "生成 Ed25519 签名清单与元数据 stub，篡改任意受保护条目都会被拒绝。" },
+    s4: { title: "运行期解密", desc: "Agent 在 JVM 定义类之前解密；缺失、过期或换机时 fail-closed，不会静默降级。" },
+    pipe1: "源码",
+    pipe2: "编译",
+    pipe3: "加密",
+    pipe4: "签名",
+    pipe5: "交付",
+    pipe6: "运行期解密",
+    note: "构建全程在本地完成。源码不上传，私钥不出构建机。"
+  },
+  arch: {
+    eyebrow: "密钥体系",
+    title: "分层派生，单点失守不致命。",
+    lead: "主密钥、许可证密钥、构建密钥与类密钥逐级派生。签名私钥只存在于构建侧，运行时只携带公钥。",
+    node1: { title: "Master key", desc: "内嵌 Agent，混淆存储" },
+    node2: { title: "License key", desc: "HKDF(build_id) 派生" },
+    node3: { title: "Build key", desc: "解封 jshield.lic 取得" },
+    node4: { title: "Class key", desc: "HKDF(类名) 派生，每类独立" },
+    badge1: "Ed25519 签名 / 验签",
+    badge2: "AAD = build_id + class name",
+    badge3: "运行时不接触签发私钥",
+    note: "同一套指纹算法与许可证字段，同时服务 Python 与 Java。"
+  },
+  security: {
+    eyebrow: "安全边界",
+    title: "我们提高门槛，不贩卖幻觉。",
+    lead: "任何同进程保护都无法阻止有动机的攻击者 dump 内存。CodeShield 的目标，是把「顺手反编译」提高到「需要编写 Agent」的工程问题。",
+    c1: {
+      title: "能够有效阻止",
+      i1: "解压或反编译直接读取业务逻辑",
+      i2: "缺少 Agent 时的静默降级",
+      i3: "篡改受保护条目或完整性清单",
+      i4: "换机、过期与超宽限使用",
+      i5: "跨构建、跨类名移植密文"
+    },
+    c2: {
+      title: "明确不承诺",
+      i1: "阻止 JVMTI 或 heap dump 提取明文",
+      i2: "阻止有动机的攻击者挂载自有 Agent",
+      i3: "隐藏类名、方法签名与注解",
+      i4: "绝对 DRM 或「无法破解」"
+    },
+    c3: {
+      title: "建议的部署方式",
+      i1: "为工具、安装包与产物做代码签名",
+      i2: "按渠道发放短期许可证并定期续期",
+      i3: "高价值客户使用托管构建或 HSM 签发",
+      i4: "配合合同、审计与 EULA 形成完整防线"
+    },
+    footnote: "以上措辞与产品文档的安全声明保持一致。我们只承诺可验证的能力。"
+  },
+  compare: {
+    eyebrow: "能力对比",
+    title: "和只做混淆的工具，不在一个维度。",
+    lead: "混淆降低可读性；CodeShield 同时解决密文、完整性、授权与续期。",
+    tableAria: "能力对比表",
+    feature: "能力",
+    col1: "纯混淆工具",
+    col2: "开源加密方案",
+    col3: "CodeShield",
+    r1: "静态反编译",
+    r1c1: "可读逻辑",
+    r1c2: "密文",
+    r1c3: "密文 + 签名清单",
+    r2: "框架元数据扫描",
+    r2c1: "兼容",
+    r2c2: "常需妥协",
+    r2c3: "元数据 stub，原生兼容",
+    r3: "签名许可证",
+    r3c1: "无",
+    r3c2: "弱或需自建",
+    r3c3: "Ed25519，离线可验",
+    r4: "续期方式",
+    r4c1: "无",
+    r4c2: "重新打包",
+    r4c3: "只替换许可文件",
+    r5: "机器绑定",
+    r5c1: "无",
+    r5c2: "部分支持",
+    r5c3: "支持首次绑定",
+    r6: "完整性校验",
+    r6c1: "无",
+    r6c2: "部分",
+    r6c3: "全量 SHA-256",
+    r7: "跨语言统一授权",
+    r7c1: "无",
+    r7c2: "无",
+    r8: "商业交付流程",
+    r8c1: "无",
+    r8c2: "无",
+    r8c3: "试用 · 配额 · 撤销",
+    hint: "左右滑动查看完整对比"
+  },
+  pricing: {
+    eyebrow: "定价",
+    title: "从试用开始，随业务成长。",
+    lead: "所有版本均在本地构建。试用无需信用卡；正式授权按年订阅，续期无需重新打包产物。",
+    trial: {
+      name: "试用版",
+      tag: "入门",
+      price: "¥0",
+      period: "14 天",
+      desc: "完整体验核心保护链路",
+      cta: "开始免费试用",
+      f1: "14 天有效期",
+      f2: "3 次构建额度",
+      f3: "模块与 class 核心加密",
+      f4: "单机绑定",
+      f5: "产物试用水印",
+      f6: "不含原生运行时、产物签发与 CI"
+    },
+    pro: {
+      name: "专业版",
+      tag: "最受欢迎",
+      price: "¥299",
+      period: "/ 席位 / 年",
+      desc: "为独立开发者与小团队",
+      cta: "购买专业版",
+      f1: "每月 100 次本地构建",
+      f2: "三种密码套件",
+      f3: "原生运行时（Python）",
+      f4: "产物许可证签发",
+      f5: "客户水印与版本标识",
+      f6: "Python + Java 双目标",
+      f7: "Maven 插件与 CLI",
+      f8: "邮件支持（1 个工作日）"
+    },
+    ent: {
+      name: "企业版",
+      tag: "规模化",
+      price: "¥599",
+      period: "/ 席位 / 年 · 5 席位起",
+      desc: "为需要离线与审计的团队",
+      cta: "联系销售",
+      f1: "包含专业版全部能力",
+      f2: "离线激活与离线响应",
+      f3: "CI Token 与流水线节点",
+      f4: "撤销列表与构建审计",
+      f5: "HSM / KMS 签发对接",
+      f6: "私有化部署支持",
+      f7: "优先支持（4 小时响应）",
+      f8: "定制交付与 SLA"
+    },
+    note: "价格以人民币计，按年订阅。最终价格、税费与 SLA 以销售合同为准；试用版能力受策略限制。",
+    guarantee1: "可开具发票",
+    guarantee2: "支持对公转账",
+    guarantee3: "商业 EULA"
+  },
+  faq: {
+    eyebrow: "常见问题",
+    title: "购买前，你可能想知道。",
+    q1: "加密后会影响启动性能吗？",
+    a1: "Java 的 AES-GCM 走 AES-NI，数千个类的解密通常在几十毫秒量级；主要开销来自磁盘 IO，CodeShield 使用共享 JarFile 随机读取。Python 按模块惰性解密，未使用的模块不会产生开销。",
+    q2: "支持 Spring Boot 吗？",
+    a2: "支持。默认 stub 模式保留字段、方法签名与注解，组件扫描、依赖注入、配置绑定、JPA 与 Actuator 均正常。我们已在 Spring Boot 3.2 fat jar 上完成真实项目回归。",
+    q3: "支持哪些 Python / Java 版本？",
+    a3: "Python 面向 CPython 3.12，Django 项目已验证。Java 目标字节码覆盖 JDK 8–21，构建器建议使用 JDK 11 或 17+；已验证 JDK 11 与 JDK 17 上的 Spring Boot 3.2。",
+    q4: "续期需要重新打包吗？",
+    a4: "不需要。Java 产物只需替换 jshield.lic，Python 产物替换 pyshield.lic；业务 jar 与受保护副本保持不变，机器绑定记录也不会丢失。",
+    q5: "能防住所有逆向工程吗？",
+    a5: "不能，任何同进程保护都做不到。CodeShield 能阻止直接反编译、篡改与无授权运行，把攻击成本提高到需要编写 Agent、使用 JVMTI 或分析内存的程度。",
+    q6: "可以完全离线部署吗？",
+    a6: "可以。运行期只做本地验签与解密，不依赖在线服务；企业版提供离线激活申请与签名响应文件，适合内网与隔离环境。",
+    q7: "一份授权可以同时用于 Python 和 Java 吗？",
+    a7: "可以。两个引擎共享许可证字段与机器指纹算法，同一份工具授权可以解锁 Python 与 Java 双目标。",
+    q8: "购买后如何交付？",
+    a8: "付款后我们会签发工具许可证并提供下载地址，导入即可使用。企业版支持合同、对公转账、发票与定制 SLA。"
+  },
+  cta: {
+    title: "准备好交付你的下一个黑盒了吗？",
+    lead: "14 天免费试用，5 分钟完成第一次受保护构建。",
+    primary: "获取试用授权",
+    secondary: "预约演示",
+    note: "也可以直接邮件联系：hello@codeshield.dev"
+  },
+  footer: {
+    tagline: "面向 Python 与 Java 的构建期代码保护与授权交付。",
+    product: "产品",
+    product1: "能力",
+    product2: "工作原理",
+    product3: "安全边界",
+    product4: "定价",
+    resources: "资源",
+    resources1: "常见问题",
+    resources2: "技术文档",
+    resources3: "系统状态",
+    resources4: "更新日志",
+    company: "公司",
+    company1: "联系我们",
+    company2: "隐私政策",
+    company3: "最终用户许可协议",
+    rights: "保留所有权利。",
+    made: "为交付真实软件的团队而设计。"
+  },
+  legal: {
+    privacy: {
+      title: "隐私政策",
+      body: "<p>本官网为静态页面，不使用跟踪 Cookie，也不收集个人数据。主题与语言偏好仅保存在你的浏览器 localStorage 中。当你通过邮件联系我们时，我们只使用这些信息回复你的咨询。</p><p>正式授权系统上线后，本政策会更新，并在收集任何账号或机器信息前征得你的同意。</p>"
+    },
+    eula: {
+      title: "最终用户许可协议",
+      body: "<p>CodeShield 以商业软件许可协议授权。工具许可证按席位与期限签发，禁止未经授权的再分发；受保护产物的分发权归购买方所有。</p><p>完整条款以随工具交付的 LICENSE 与销售合同为准。如需获取正式文本，请联系 hello@codeshield.dev。</p>"
+    }
+  },
+  toast: {
+    soon: "该页面即将上线",
+    copied: "已复制到剪贴板",
+    emailCopied: "邮箱已复制"
+  },
+  mailto: {
+    trialSubject: "CodeShield 试用申请",
+    proSubject: "CodeShield 专业版购买咨询",
+    enterpriseSubject: "CodeShield 企业版咨询",
+    demoSubject: "CodeShield 预约演示"
+  }
+};
+
+export default zh;

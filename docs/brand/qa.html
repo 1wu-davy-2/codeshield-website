@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;background:#fff;font-family:system-ui,"Microsoft YaHei",sans-serif;color:#101828}
+  .sheet{display:flex;gap:28px;padding:24px}
+  .col{display:flex;flex-direction:column;gap:10px;align-items:center}
+  .px{image-rendering:pixelated;display:block}
+  .lbl{font-size:11px;color:#667085}
+  .row{display:flex;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet"></div>
+<script>
+  const icons = ["codeshield.svg","pyshield.svg","javashield.svg"];
+  const sheet = document.getElementById("sheet");
+  for (const src of icons) {
+    const col = document.createElement("div");
+    col.className = "col";
+    const big = document.createElement("img");
+    big.src = src; big.width = 160; big.height = 160;
+    col.appendChild(big);
+    for (const size of [64, 32, 16]) {
+      const row = document.createElement("div");
+      row.className = "row";
+      const a = document.createElement("img");
+      a.src = src; a.width = size; a.height = size;
+      const b = document.createElement("img");
+      b.src = src; b.width = size; b.height = size;
+      b.className = "px";
+      b.style.width = "128px"; b.style.height = "128px";
+      const lbl = document.createElement("span");
+      lbl.className = "lbl"; lbl.textContent = size + "px";
+      row.append(a, b, lbl);
+      col.appendChild(row);
+    }
+    sheet.appendChild(col);
+  }
+</script>
+</body>
+</html>

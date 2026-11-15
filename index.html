@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeShield — Python 与 Java 源码保护与授权交付</title>
+  <meta id="metaDescription" name="description" content="CodeShield 以构建期加密、运行期解密与 Ed25519 签名许可证，为 Python 与 Java 应用提供可交付的代码保护。14 天免费试用。">
+  <meta id="metaThemeColor" name="theme-color" content="#f7faff">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CodeShield">
+  <meta property="og:title" content="CodeShield — Ship code, not source.">
+  <meta property="og:description" content="Build-time encryption, runtime decryption and Ed25519 licensing for Python and Java. Encrypted at rest, licensed for delivery.">
+  <meta property="og:image" content="assets/img/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CodeShield — Ship code, not source.">
+  <meta name="twitter:description" content="Build-time encryption, runtime decryption and Ed25519 licensing for Python and Java.">
+  <meta name="twitter:image" content="assets/img/og-cover.png">
+  <script>
+    (function () {
+      try {
+        var q = new URLSearchParams(location.search);
+        var t = q.get('theme');
+        if (t !== 'light' && t !== 'dark') t = localStorage.getItem('cs-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+
+        var raw = q.get('lang');
+        var stored = null;
+        try { stored = localStorage.getItem('cs-lang'); } catch (e) { /* ignore */ }
+        var tag = String(raw || stored || '').toLowerCase();
+        if (tag.indexOf('zh') === 0) document.documentElement.lang = 'zh-Hans';
+        else if (tag.indexOf('ja') === 0) document.documentElement.lang = 'ja';
+        else if (tag.indexOf('ko') === 0) document.documentElement.lang = 'ko';
+        else if (tag.indexOf('en') === 0) document.documentElement.lang = 'en';
+      } catch (e) { /* no-op */ }
+    })();
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CodeShield",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Code protection and license delivery",
+      "operatingSystem": "Windows, macOS, Linux",
+      "description": "Build-time encryption, runtime decryption and Ed25519-signed licensing for Python and Java applications.",
+      "offers": [
+        { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "CNY" },
+        { "@type": "Offer", "name": "Pro", "price": "299", "priceCurrency": "CNY" },
+        { "@type": "Offer", "name": "Enterprise", "price": "599", "priceCurrency": "CNY" }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#2f6bff"/>
+        <stop offset=".55" stop-color="#0aa2ff"/>
+        <stop offset="1" stop-color="#24e0e0"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-logo" viewBox="0 0 32 32">
+      <path d="M16 2.4 27.8 6.3v8.9c0 7.2-4.9 12.2-11.8 14.1C9.1 27.4 4.2 22.4 4.2 15.2V6.3L16 2.4Z" fill="url(#brandGrad)"/>
+      <path d="M16 2.4 27.8 6.3v8.9c0 7.2-4.9 12.2-11.8 14.1C9.1 27.4 4.2 22.4 4.2 15.2V6.3L16 2.4Z" fill="none" stroke="rgba(255,255,255,.28)" stroke-width=".8"/>
+      <path d="m13.6 11.2-3.9 4 3.9 4M18.4 11.2l3.9 4-3.9 4M17.4 9.6l-2.8 11.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.6"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/><path d="M12 14.6v2.4"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.6"/><path d="m10.7 10.7 8.3 8.3M15.6 15.6l2-2M17.8 17.8l1.8-1.8"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24"><path d="M4 4.5 20 20.5"/><path d="M7.4 7.9A5.2 5.2 0 0 1 17 11a3.4 3.4 0 0 1 2.9 5.2M4.3 10.6A4.2 4.2 0 0 0 6.8 18h7.6"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M8 7V3.5M16 7V3.5"/><path d="M6.5 7h11v4.5a5.5 5.5 0 0 1-11 0V7Z"/><path d="M12 17v3.5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3.5 8.5 4.7L12 12.9 3.5 8.2 12 3.5Z"/><path d="m4.3 12.3 7.7 4.3 7.7-4.3M4.3 16.3l7.7 4.3 7.7-4.3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M3.5 12h17M12 3.2c2.4 2.5 3.6 5.5 3.6 8.8S14.4 18.3 12 20.8C9.6 18.3 8.4 15.3 8.4 12S9.6 5.7 12 3.2Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 4.8 4.8L19.7 6.9"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7.8 12.4 2.8 2.8 5.8-6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.2 6.2 17.8 17.8M17.8 6.2 6.2 17.8"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5.5 12h13"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="m13.2 5.8 6.2 6.2-6.2 6.2"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8.2 7H17v8.8"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19.2V5"/><path d="m5.8 11.2 6.2-6.2 6.2 6.2"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6.5 9.2 5.5 5.5 5.5-5.5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.1M12 19.1v2.1M2.8 12h2.1M19.1 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M18.5 5.5 17 7M7 17l-1.5 1.5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.2"/><path d="M15.5 8.5V6.2A2.2 2.2 0 0 0 13.3 4H6.2A2.2 2.2 0 0 0 4 6.2v7.1a2.2 2.2 0 0 0 2.2 2.2h2.3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="m7.5 9.5 3 2.7-3 2.7M13.5 15h3.5"/></symbol>
+    <symbol id="i-file-check" viewBox="0 0 24 24"><path d="M6 3.5h7l5 5v12H6v-17Z"/><path d="M13 3.5v5h5"/><path d="m9.2 14.5 2 2 3.6-4"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3.5v3.5M14 3.5v3.5M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 5.8v5.7c0 4.9-3.2 8.4-8 9.9-4.8-1.5-8-5-8-9.9V5.8L12 3Z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></symbol>
+    <symbol id="i-shield-plain" viewBox="0 0 24 24"><path d="M12 3 20 5.8v5.7c0 4.9-3.2 8.4-8 9.9-4.8-1.5-8-5-8-9.9V5.8L12 3Z"/></symbol>
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M6 9.5a6.2 6.2 0 0 1 12 0c0 4.6-.7 7.6-2 9.6"/><path d="M9 12.2a3.1 3.1 0 0 1 6.1 0c0 3.1-.5 5.6-1.3 7"/><path d="M12 12.2c0 3.5-.3 5.6-.9 7.3M4.6 12.2c0 2.5.2 4.6.8 6.3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M12 7v5.3l3.4 2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5c.7 4.4 2.6 6.3 7 7-4.4.7-6.3 2.6-7 7-.7-4.4-2.6-6.3-7-7 4.4-.7 6.3-2.6 7-7Z"/><path d="M19 16.5c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 5.5L19.5 7"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3.5h7l5 5v12H6v-17Z"/><path d="M13 3.5v5h5M9 12h6M9 15.5h6"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.4v9.2L12 21l-8-4.4V7.4L12 3Z"/><path d="m4.4 7.5 7.6 4.3 7.6-4.3M12 11.8V21"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8.5V5.8A1.8 1.8 0 0 1 5.8 4h2.7M15.5 4h2.7A1.8 1.8 0 0 1 20 5.8v2.7M20 15.5v2.7a1.8 1.8 0 0 1-1.8 1.8h-2.7M8.5 20H5.8A1.8 1.8 0 0 1 4 18.2v-2.7M4 12h16"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="m15.3 8.7-1.9 4.7-4.7 1.9 1.9-4.7 4.7-1.9Z"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3.8 21 19.5H3L12 3.8Z"/><path d="M12 9v4.6M12 16.6v.1"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8.5 5.5v13l10-6.5-10-6.5Z"/></symbol>
+  </svg>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

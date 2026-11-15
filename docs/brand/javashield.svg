@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="JavaShield">
+  <defs>
+    <linearGradient id="js" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E9F6E"/>
+      <stop offset="1" stop-color="#0B6E5A"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 6.6 52.4 13.6V31.4C52.4 43.4 43.8 52.4 32 56.4 20.2 52.4 11.6 43.4 11.6 31.4V13.6Z" fill="url(#js)"/>
+  <rect x="21.9" y="19.4" width="20.2" height="20.2" rx="4.6" fill="#fff"/>
+  <g fill="none" stroke="#F5A524" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.4 19.4 28.6 26.4 33.6 30.2 29.4 34.8 31.4 39.6" stroke-width="2.6"/>
+    <path d="M30.4 31.4 27.6 33.2" stroke-width="1.9"/>
+  </g>
+</svg>
