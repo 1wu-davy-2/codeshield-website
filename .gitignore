@@ -4,3 +4,4 @@ dist/
 legacy-static/
 *.local
 .DS_Store
+.workbuddy/
