@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "product": "python",
+  "stage": "before",
+  "demo": true,
+  "project": {
+    "id": "erp-portal",
+    "name": "ERP Portal",
+    "runtime": "CPython 3.12 · Django 5.2",
+    "root": "erp-portal",
+    "container": "dir",
+    "command": "python shield.py build -p ./erp-portal -o ./dist/erp-portal-shielded --cipher chacha --runtime-pyc --integrity protected --bind-first-run -e 2027-12-31",
+    "secretOmitted": true
+  },
+  "generatedAt": "2026-11-15T10:31:08+00:00",
+  "files": [
+    {
+      "id": "manage.py",
+      "path": "manage.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 330,
+      "sha256": "151f4d26aed53a0873d5ce0b200cd0e8d5f95494bbbadfa13083ba4e83f02ec6",
+      "content": "#!/usr/bin/env python\n\"\"\"Django management entry point for erp-portal.\"\"\"\nimport os\nimport sys\n\n\ndef main():\n    os.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"sampleproj.settings\")\n    from django.core.management import execute_from_command_line\n\n    execute_from_command_line(sys.argv)\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "encoding": "text"
+    },
+    {
+      "id": "requirements.txt",
+      "path": "requirements.txt",
+      "kind": "config",
+      "language": "text",
+      "bytes": 35,
+      "sha256": "fb9cfaa9b257b877c278f78e49eea96b08c1e22990e984a30a434a1c5041f426",
+      "content": "Django==5.2\npsycopg[binary]==3.2.3\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/__init__.py",
+      "path": "demo/__init__.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 35,
+      "sha256": "bb412188e8467a823f9f28f623d485c2376c28ffae334be47ffce7ff13117b96",
+      "content": "\"\"\"ERP portal demo application.\"\"\"\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/apps.py",
+      "path": "demo/apps.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 140,
+      "sha256": "a8cb55a0efbe2235db339309b3498f9de037fb90bcb559d9e7f5a112002698d1",
+      "content": "from django.apps import AppConfig\n\n\nclass DemoConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"demo\"\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/services/__init__.py",
+      "path": "demo/services/__init__.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 36,
+      "sha256": "62d8659cddd80fa0648a175578c24976e1fd13233f412d09e0484253271fdc4a",
+      "content": "\"\"\"Pricing and billing services.\"\"\"\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/services/pricing.py",
+      "path": "demo/services/pricing.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 1292,
+      "sha256": "8196d158a140cf9eedcd94181f9925d81a2c1e70e33f0c698e7ab596cc53cd78",
+      "content": "\"\"\"Pricing rules for subscription plans. Kept server-side on purpose.\"\"\"\nfrom dataclasses import dataclass\nfrom decimal import Decimal, ROUND_HALF_UP\n\n\n@dataclass(frozen=True)\nclass Plan:\n    code: str\n    monthly_price: Decimal\n    seats_included: int\n\n\nPLANS = {\n    \"starter\": Plan(\"starter\", Decimal(\"99.00\"), 3),\n    \"growth\": Plan(\"growth\", Decimal(\"299.00\"), 10),\n    \"enterprise\": Plan(\"enterprise\", Decimal(\"899.00\"), 50),\n}\nENTERPRISE_DISCOUNT = Decimal(\"0.82\")\nOVERAGE_PRICE = Decimal(\"19.00\")\n\n\ndef _money(value: Decimal) -> str:\n    return str(value.quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP))\n\n\ndef calculate_price(customer, plan_code: str, seats: int = 0) -> Decimal:\n    plan = PLANS[plan_code]\n    base = plan.monthly_price\n    extra_seats = max(0, seats - plan.seats_included)\n    total = base + OVERAGE_PRICE * extra_seats\n    if customer.is_enterprise:\n        total *= ENTERPRISE_DISCOUNT\n    return total.quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)\n\n\ndef quote_for_customer(customer_code: str, plan_code: str) -> dict:\n    plan = PLANS[plan_code]\n    return {\n        \"plan\": plan.code,\n        \"monthly_price\": _money(plan.monthly_price),\n        \"currency\": \"CNY\",\n        \"seats_included\": plan.seats_included,\n        \"quoted_for\": customer_code,\n    }\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/tests.py",
+      "path": "demo/tests.py",
+      "kind": "test",
+      "language": "python",
+      "bytes": 350,
+      "sha256": "6d4982096426cf4699a65a6510b155f5740b747496d9ae1d29b1d8489c9bb95d",
+      "content": "from decimal import Decimal\n\nfrom django.test import SimpleTestCase\n\nfrom .services.pricing import calculate_price\n\n\nclass PricingRegressionTests(SimpleTestCase):\n    def test_enterprise_discount(self):\n        customer = type(\"Customer\", (), {\"is_enterprise\": True})()\n        self.assertLess(calculate_price(customer, \"growth\"), Decimal(\"299.00\"))\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/urls.py",
+      "path": "demo/urls.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 116,
+      "sha256": "d1271cc81de5f1ef60a56fe27c4eb33e04c26d33b79783bb4ff14f6cb0deb55e",
+      "content": "from django.urls import path\n\nfrom . import views\n\nurlpatterns = [\n    path(\"quote/\", views.quote, name=\"quote\"),\n]\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/views.py",
+      "path": "demo/views.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 335,
+      "sha256": "206cff225eff21f3f51c8518ed5aa34b94b95568fe87a544532b6baf56f960c5",
+      "content": "from django.http import JsonResponse\nfrom django.views.decorators.http import require_GET\n\nfrom .services.pricing import quote_for_customer\n\n\n@require_GET\ndef quote(request):\n    customer = request.GET.get(\"customer\", \"standard\")\n    plan = request.GET.get(\"plan\", \"growth\")\n    return JsonResponse(quote_for_customer(customer, plan))\n",
+      "encoding": "text"
+    },
+    {
+      "id": "demo/templates/demo/index.html",
+      "path": "demo/templates/demo/index.html",
+      "kind": "data",
+      "language": "html",
+      "bytes": 57,
+      "sha256": "bdefab1671cb2b746eb4d66c32ff4886008300016aa19a67253d96c6ed4475a1",
+      "content": "<h1>ERP Portal</h1>\n<p>Subscription quoting console.</p>\n",
+      "encoding": "text"
+    },
+    {
+      "id": "sampleproj/__init__.py",
+      "path": "sampleproj/__init__.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 38,
+      "sha256": "bff3220093b97f88bc9c0c93cd23e266bac45e5cf5e3a9d689e833f2ef72e848",
+      "content": "\"\"\"Project package for erp-portal.\"\"\"\n",
+      "encoding": "text"
+    },
+    {
+      "id": "sampleproj/settings.py",
+      "path": "sampleproj/settings.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 558,
+      "sha256": "7482546c9cbe1846ef948833914fc4985ac166c9a6d42cfe481f2afa76335315",
+      "content": "from pathlib import Path\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n\nSECRET_KEY = \"demo-only-not-a-real-secret\"\nDEBUG = False\nALLOWED_HOSTS = [\"*\"]\n\nINSTALLED_APPS = [\n    \"django.contrib.contenttypes\",\n    \"django.contrib.staticfiles\",\n    \"demo\",\n]\n\nMIDDLEWARE = [\"django.middleware.common.CommonMiddleware\"]\nROOT_URLCONF = \"sampleproj.urls\"\n\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.sqlite3\",\n        \"NAME\": BASE_DIR / \"db.sqlite3\",\n    }\n}\n\nSTATIC_URL = \"static/\"\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n",
+      "encoding": "text"
+    },
+    {
+      "id": "sampleproj/urls.py",
+      "path": "sampleproj/urls.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 97,
+      "sha256": "5f4fa62986c7e5ef62a338690f3afe5b276d3775a57cd82757e84df1d4a6945d",
+      "content": "from django.urls import include, path\n\nurlpatterns = [\n    path(\"api/\", include(\"demo.urls\")),\n]\n",
+      "encoding": "text"
+    },
+    {
+      "id": "sampleproj/wsgi.py",
+      "path": "sampleproj/wsgi.py",
+      "kind": "source",
+      "language": "python",
+      "bytes": 170,
+      "sha256": "2260c7155176a5e1041c2cef3efa80dc94e2767c01607dba6393da137ca3ca64",
+      "content": "import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"sampleproj.settings\")\napplication = get_wsgi_application()\n",
+      "encoding": "text"
+    }
+  ]
+}
