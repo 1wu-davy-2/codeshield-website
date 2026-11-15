@@ -17,6 +17,8 @@ export default function ImageLightbox({ item, onClose }) {
       if (!dialog.open) {
         if (typeof dialog.showModal === "function") dialog.showModal();
         else dialog.setAttribute("open", "");
+        // focus the dialog itself so the close button does not open pre-focused
+        dialog.focus?.({ preventScroll: true });
       }
       document.body.classList.add("lightbox-open");
       return;
@@ -33,6 +35,7 @@ export default function ImageLightbox({ item, onClose }) {
     <dialog
       className="lightbox"
       ref={dialogRef}
+      tabIndex={-1}
       aria-label={item?.caption || t("ui.zoom")}
       onClose={() => {
         document.body.classList.remove("lightbox-open");

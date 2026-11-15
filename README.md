@@ -68,7 +68,9 @@ legacy-static/              迁移前的原生 HTML/CSS/JS 备份（不参与构
 - 浅色：`public/assets/img/product/{python,java}-workbench-light.png`
 - 回退：`public/assets/img/product/{python,java}-workbench.png`
 
-当前已提供 Python / Java 各深色、浅色两套截图，切换右上角主题即可自动轮动。截图规格和可直接转发给设计同事的话术见 [`docs/product-media-brief.md`](docs/product-media-brief.md)。
+当前已提供 Python / Java 各深色、浅色两套截图，切换右上角主题即可自动轮动。
+
+截图支持点击放大：点卡片任意位置或右下角「点击放大」胶囊，打开原生 `<dialog>` 灯箱查看完整原图（Esc 或点击背景关闭，可另开原图）。灯箱按 1600px 原始宽度封顶，不做放大插值。截图规格和可直接转发给设计同事的话术见 [`docs/product-media-brief.md`](docs/product-media-brief.md)。
 
 ## 加密构建工作台
 

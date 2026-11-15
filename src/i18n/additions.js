@@ -240,7 +240,10 @@ const additions = {
       javaCaption: "Java 构建工作台",
       pythonAlt: "CodeShield Python 构建工作台界面",
       javaAlt: "CodeShield Java 构建工作台界面",
-      previewNote: "界面预览；深色与浅色截图会随站点主题自动切换，实际界面以发布版本为准。"
+      previewNote: "界面预览；深色与浅色截图会随站点主题自动切换，实际界面以发布版本为准。",
+      zoom: "点击放大",
+      openOriginal: "打开原图",
+      escHint: "Esc 或点击背景关闭",
     }
   },
   en: {
@@ -482,7 +485,10 @@ const additions = {
       javaCaption: "Java build workspace",
       pythonAlt: "CodeShield Python build workspace",
       javaAlt: "CodeShield Java build workspace",
-      previewNote: "Interface previews follow the site theme. The shipped workspace may differ."
+      previewNote: "Interface previews follow the site theme. The shipped workspace may differ.",
+      zoom: "Click to enlarge",
+      openOriginal: "Open original",
+      escHint: "Esc or click outside to close",
     }
   },
   ja: {
@@ -724,7 +730,10 @@ const additions = {
       javaCaption: "Java ビルドワークスペース",
       pythonAlt: "CodeShield Python ビルドワークスペースの画面",
       javaAlt: "CodeShield Java ビルドワークスペースの画面",
-      previewNote: "ライト / ダークの画面はサイトテーマに連動します。実際の画面はリリース版に準じます。"
+      previewNote: "ライト / ダークの画面はサイトテーマに連動します。実際の画面はリリース版に準じます。",
+      zoom: "クリックで拡大",
+      openOriginal: "元の画像を開く",
+      escHint: "Esc または背景クリックで閉じる",
     }
   },
   ko: {
@@ -966,7 +975,10 @@ const additions = {
       javaCaption: "Java 빌드 워크스페이스",
       pythonAlt: "CodeShield Python 빌드 워크스페이스 화면",
       javaAlt: "CodeShield Java 빌드 워크스페이스 화면",
-      previewNote: "라이트 / 다크 화면은 사이트 테마에 맞춰 전환됩니다. 실제 화면은 출시 버전에 따릅니다."
+      previewNote: "라이트 / 다크 화면은 사이트 테마에 맞춰 전환됩니다. 실제 화면은 출시 버전에 따릅니다.",
+      zoom: "클릭하여 확대",
+      openOriginal: "원본 이미지 열기",
+      escHint: "Esc 또는 배경 클릭으로 닫기",
     }
   }
 };
