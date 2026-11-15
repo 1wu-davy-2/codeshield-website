@@ -28,7 +28,7 @@ export function Footer({ onCopy, onSoon, onLegal }) {
         <div className="footer-col">
           <h4>{t("footer.product")}</h4>
           <a href="#capabilities">{t("footer.product1")}</a>
-          <a href="#how">{t("footer.product2")}</a>
+          <a href="#/lab">{t("footer.product2")}</a>
           <a href="#security">{t("footer.product3")}</a>
           <a href="#pricing">{t("footer.product4")}</a>
         </div>
@@ -36,9 +36,7 @@ export function Footer({ onCopy, onSoon, onLegal }) {
         <div className="footer-col">
           <h4>{t("footer.resources")}</h4>
           <a href="#faq">{t("footer.resources1")}</a>
-          <button type="button" className="footer-link" onClick={onSoon}>
-            {t("footer.resources2")}
-          </button>
+          <a href="#/docs">{t("footer.resources2")}</a>
           <button type="button" className="footer-link" onClick={onSoon}>
             {t("footer.resources3")}
           </button>

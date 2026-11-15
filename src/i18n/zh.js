@@ -17,7 +17,9 @@ const zh = {
     backToTop: "返回顶部"
   },
   nav: {
+    docs: "文档",
     product: "产品",
+    lab: "加密构建",
     capabilities: "能力",
     how: "工作原理",
     security: "安全边界",
@@ -31,7 +33,7 @@ const zh = {
     title2: "不交付源码。",
     lead: "CodeShield 为 Python 与 Java 应用提供同一套构建期加密、运行期解密与 Ed25519 签名授权体系。类与模块在磁盘上始终是密文，许可证独立签发——续期只需替换一个文件。",
     ctaPrimary: "开始 14 天免费试用",
-    ctaSecondary: "查看执行流程",
+    ctaSecondary: "打开加密构建",
     trust1: "无需信用卡",
     trust2: "本地离线构建",
     trust3: "5 分钟接入",
@@ -264,7 +266,7 @@ const zh = {
     tagline: "面向 Python 与 Java 的构建期代码保护与授权交付。",
     product: "产品",
     product1: "能力",
-    product2: "工作原理",
+    product2: "加密构建",
     product3: "安全边界",
     product4: "定价",
     resources: "资源",

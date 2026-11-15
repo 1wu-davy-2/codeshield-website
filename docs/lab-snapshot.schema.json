@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeshield.dev/schemas/lab-snapshot-v1.json",
+  "title": "CodeShield lab snapshot v1",
+  "description": "One side of a before/after protected-build snapshot. Four documents are required: python-before, python-after, java-before, java-after.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "product", "stage", "demo", "project", "generatedAt", "files"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "product": {
+      "enum": ["python", "java"]
+    },
+    "stage": {
+      "enum": ["before", "after"]
+    },
+    "demo": {
+      "type": "boolean",
+      "description": "true shows the Demo snapshot badge; false shows Real build snapshot."
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project": {
+      "$ref": "#/$defs/project"
+    },
+    "build": {
+      "$ref": "#/$defs/build"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "after"
+          }
+        }
+      },
+      "then": {
+        "required": ["build"]
+      }
+    }
+  ],
+  "$defs": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "runtime", "root"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Project root for before; output root for after. Virtual paths are allowed for JAR entries."
+        },
+        "container": {
+          "enum": ["dir", "jar"],
+          "description": "jar expands JAR entries as a virtual folder and shows the JAR layout note."
+        },
+        "command": {
+          "type": "string"
+        },
+        "secretOmitted": {
+          "type": "boolean",
+          "description": "true shows the build-secret privacy note."
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "algorithm", "count", "unit", "output"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": "string"
+        },
+        "algorithm": {
+          "type": "string",
+          "examples": ["AES-256-GCM", "ChaCha20-Poly1305"]
+        },
+        "cipher": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string",
+          "examples": ["framework-safe", "strict"]
+        },
+        "integrity": {
+          "type": "string",
+          "examples": ["protected", "full", "off"]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "examples": ["modules", "classes"]
+        },
+        "output": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string",
+          "examples": ["pyshield.lic", "jshield.lic"]
+        },
+        "machineBinding": {
+          "type": "boolean"
+        },
+        "expires": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "kind", "language", "bytes", "sha256", "content"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique within one document. For before files this is the pairing key."
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Display path. For Java, use virtual JAR paths such as demo.jar/BOOT-INF/classes/..."
+        },
+        "sourceId": {
+          "type": ["string", "null"],
+          "description": "After only: the id of the before file this artifact comes from; omit or null for generated files."
+        },
+        "kind": {
+          "enum": ["source", "config", "test", "stub", "sidecar", "manifest", "license", "metadata", "binary", "data", "other"]
+        },
+        "language": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 200000
+        },
+        "encoding": {
+          "enum": ["text", "hexdump", "javap"],
+          "default": "text"
+        },
+        "note": {
+          "type": "string"
+        },
+        "redacted": {
+          "type": "boolean"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean",
+          "description": "Preferred artifact for its source. If omitted, the UI picks the first stub/sidecar."
+        }
+      }
+    }
+  }
+}

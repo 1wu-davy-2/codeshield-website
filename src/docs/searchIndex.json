@@ -1,0 +1,712 @@
+[
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "PyShield 文档",
+    "description": "PyShield 是一套面向 Python / Django 的构建期源码保护工具：模块在构建时编译、压缩、加密并替换为 stub，运行期校验许可证后在内存中解密执行。",
+    "href": "#/docs",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "什么是 PyShield",
+    "description": "",
+    "href": "#/docs#what-is-pyshield",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "工作方式",
+    "description": "",
+    "href": "#/docs#how-it-works",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "构建产物",
+    "description": "",
+    "href": "#/docs#what-you-get",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "安全边界",
+    "description": "",
+    "href": "#/docs#security-boundary",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "index",
+    "pageTitle": "PyShield 文档",
+    "group": "指南",
+    "title": "下一步",
+    "description": "",
+    "href": "#/docs#next-steps",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "快速开始",
+    "description": "从环境准备到第一次受保护构建：安装 PyShield、保护一个 Django 项目、验证产物并部署。",
+    "href": "#/docs/quick-start",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "环境要求",
+    "description": "",
+    "href": "#/docs/quick-start#requirements",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "获取与自检",
+    "description": "",
+    "href": "#/docs/quick-start#install",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "保护第一个项目",
+    "description": "",
+    "href": "#/docs/quick-start#first-build",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "检查产物",
+    "description": "",
+    "href": "#/docs/quick-start#output",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "交付时带什么",
+    "description": "",
+    "href": "#/docs/quick-start#deploy",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "quick-start",
+    "pageTitle": "快速开始",
+    "group": "指南",
+    "title": "接下来",
+    "description": "",
+    "href": "#/docs/quick-start#next-steps",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "构建配置",
+    "description": "PyShield 构建配置参考：命令行选项、模块发现、密码套件、运行时模式、完整性清单、许可证绑定与输出结构。",
+    "href": "#/docs/build",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "基础用法",
+    "description": "",
+    "href": "#/docs/build#basic-usage",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "命令行选项",
+    "description": "",
+    "href": "#/docs/build#command-options",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "模块发现与默认排除",
+    "description": "",
+    "href": "#/docs/build#module-discovery",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "密码套件",
+    "description": "",
+    "href": "#/docs/build#ciphers",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "运行时模式",
+    "description": "",
+    "href": "#/docs/build#runtime-modes",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "完整性模式",
+    "description": "",
+    "href": "#/docs/build#integrity",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "许可证与绑定",
+    "description": "",
+    "href": "#/docs/build#license-binding",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "输出结构",
+    "description": "",
+    "href": "#/docs/build#output",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "构建流程",
+    "description": "",
+    "href": "#/docs/build#pipeline",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "常见组合",
+    "description": "",
+    "href": "#/docs/build#common-recipes",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "通用交付：首次启动绑定",
+    "description": "",
+    "href": "#/docs/build#recipe-general",
+    "kind": "heading",
+    "level": 3
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "已知道客户机：固定指纹",
+    "description": "",
+    "href": "#/docs/build#recipe-fixed",
+    "kind": "heading",
+    "level": 3
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "部署机没有 cryptography：纯 ChaCha",
+    "description": "",
+    "href": "#/docs/build#recipe-pure",
+    "kind": "heading",
+    "level": 3
+  },
+  {
+    "page": "build",
+    "pageTitle": "构建配置",
+    "group": "配置",
+    "title": "原生 runtime",
+    "description": "",
+    "href": "#/docs/build#recipe-native",
+    "kind": "heading",
+    "level": 3
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "密码套件与运行时",
+    "description": "PyShield 的模块信封、密钥派生、运行时模式、加载顺序与诊断命令。",
+    "href": "#/docs/runtime",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "密码套件",
+    "description": "",
+    "href": "#/docs/runtime#cipher-suites",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "信封格式",
+    "description": "",
+    "href": "#/docs/runtime#envelope",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "密钥体系",
+    "description": "",
+    "href": "#/docs/runtime#key-hierarchy",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "运行时模式",
+    "description": "",
+    "href": "#/docs/runtime#runtime-modes",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "运行时加载顺序",
+    "description": "",
+    "href": "#/docs/runtime#load-sequence",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "诊断命令",
+    "description": "",
+    "href": "#/docs/runtime#diagnostics",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "runtime",
+    "pageTitle": "密码套件与运行时",
+    "group": "配置",
+    "title": "部署依赖",
+    "description": "",
+    "href": "#/docs/runtime#deployment-requirements",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "完整性清单",
+    "description": "PyShield 完整性清单：Ed25519 签名、code/runtime/data 覆盖范围、可变文件、运行时校验顺序与限制。",
+    "href": "#/docs/integrity",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "清单是什么",
+    "description": "",
+    "href": "#/docs/integrity#overview",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "清单格式",
+    "description": "",
+    "href": "#/docs/integrity#manifest-format",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "运行时校验",
+    "description": "",
+    "href": "#/docs/integrity#verification",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "默认可变文件",
+    "description": "",
+    "href": "#/docs/integrity#mutable",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "构建方复核",
+    "description": "",
+    "href": "#/docs/integrity#verify",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "integrity",
+    "pageTitle": "完整性清单",
+    "group": "配置",
+    "title": "限制与边界",
+    "description": "",
+    "href": "#/docs/integrity#limitations",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "许可证与机器绑定",
+    "description": "PyShield 产物许可证：格式 v3、Ed25519 签名、首次启动绑定、固定指纹、续期与时钟回拨检测。",
+    "href": "#/docs/licensing",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "两层许可证",
+    "description": "",
+    "href": "#/docs/licensing#two-licenses",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "许可证格式 v3",
+    "description": "",
+    "href": "#/docs/licensing#license-format",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "绑定模式",
+    "description": "",
+    "href": "#/docs/licensing#binding-modes",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "首次启动绑定",
+    "description": "",
+    "href": "#/docs/licensing#first-run",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "续期与重新签发",
+    "description": "",
+    "href": "#/docs/licensing#renew",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "许可证查找顺序",
+    "description": "",
+    "href": "#/docs/licensing#lookup",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "时钟回拨与热重载",
+    "description": "",
+    "href": "#/docs/licensing#clock",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "客户标识与宽限期",
+    "description": "",
+    "href": "#/docs/licensing#customer",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "licensing",
+    "pageTitle": "许可证与机器绑定",
+    "group": "授权",
+    "title": "构建方复核许可证",
+    "description": "",
+    "href": "#/docs/licensing#verify",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "部署与验证",
+    "description": "PyShield 受保护应用的部署检查、现场配置外置、可写目录、更新流程与常见故障。",
+    "href": "#/docs/deploy",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "交付内容",
+    "description": "",
+    "href": "#/docs/deploy#package",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "部署前检查",
+    "description": "",
+    "href": "#/docs/deploy#verify",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "启动时的检查顺序",
+    "description": "",
+    "href": "#/docs/deploy#runtime-checks",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "现场配置外置",
+    "description": "",
+    "href": "#/docs/deploy#configuration",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "可写目录与时间同步",
+    "description": "",
+    "href": "#/docs/deploy#writable",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "现场允许的变更",
+    "description": "",
+    "href": "#/docs/deploy#changes",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "更新与发布流程",
+    "description": "",
+    "href": "#/docs/deploy#update",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "deploy",
+    "pageTitle": "部署与验证",
+    "group": "指南",
+    "title": "常见故障",
+    "description": "",
+    "href": "#/docs/deploy#troubleshooting",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "安全模型与边界",
+    "description": "PyShield 的威胁模型、密钥体系、完整性边界、机器绑定限制与发布检查清单。",
+    "href": "#/docs/security",
+    "kind": "page",
+    "level": 1
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "设计目标",
+    "description": "",
+    "href": "#/docs/security#goals",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "威胁模型",
+    "description": "",
+    "href": "#/docs/security#threat-model",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "密钥体系与保管",
+    "description": "",
+    "href": "#/docs/security#keys",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "完整性校验的边界",
+    "description": "",
+    "href": "#/docs/security#integrity-limits",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "机器绑定与时钟的边界",
+    "description": "",
+    "href": "#/docs/security#binding-limits",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "原生 runtime 的作用与局限",
+    "description": "",
+    "href": "#/docs/security#native",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "发布卫生",
+    "description": "",
+    "href": "#/docs/security#release",
+    "kind": "heading",
+    "level": 2
+  },
+  {
+    "page": "security",
+    "pageTitle": "安全模型与边界",
+    "group": "安全",
+    "title": "发布检查清单",
+    "description": "",
+    "href": "#/docs/security#checklist",
+    "kind": "heading",
+    "level": 2
+  }
+]

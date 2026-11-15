@@ -17,7 +17,9 @@ const ko = {
     backToTop: "맨 위로"
   },
   nav: {
+    docs: "문서",
     product: "제품",
+    lab: "암호화 빌드",
     capabilities: "기능",
     how: "작동 방식",
     security: "보안 경계",
@@ -31,7 +33,7 @@ const ko = {
     title2: "소스는 숨기세요.",
     lead: "CodeShield는 Python과 Java 애플리케이션에 빌드 시점 암호화, 런타임 복호화, Ed25519 서명 라이선스를 하나의 체계로 제공합니다. 클래스와 모듈은 디스크에 항상 암호문으로 남고, 라이선스는 별도로 발급되며 갱신은 파일 하나만 교체하면 됩니다.",
     ctaPrimary: "14일 무료 체험 시작",
-    ctaSecondary: "실행 흐름 보기",
+    ctaSecondary: "암호화 빌드 열기",
     trust1: "신용카드 불필요",
     trust2: "로컬 오프라인 빌드",
     trust3: "5분 안에 적용",
@@ -264,7 +266,7 @@ const ko = {
     tagline: "Python과 Java를 위한 빌드 시점 코드 보호와 라이선스 납품.",
     product: "제품",
     product1: "기능",
-    product2: "작동 방식",
+    product2: "암호화 빌드",
     product3: "보안 경계",
     product4: "가격",
     resources: "리소스",

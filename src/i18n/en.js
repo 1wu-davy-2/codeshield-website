@@ -17,7 +17,9 @@ const en = {
     backToTop: "Back to top"
   },
   nav: {
+    docs: "Docs",
     product: "Product",
+    lab: "Build lab",
     capabilities: "Capabilities",
     how: "How it works",
     security: "Security",
@@ -31,7 +33,7 @@ const en = {
     title2: "Not the source.",
     lead: "CodeShield gives Python and Java applications one system for build-time encryption, runtime decryption and Ed25519-signed licensing. Classes and modules stay encrypted on disk, licenses are issued independently — and renewal is a single-file swap.",
     ctaPrimary: "Start your 14-day free trial",
-    ctaSecondary: "See the execution flow",
+    ctaSecondary: "Open the build lab",
     trust1: "No credit card",
     trust2: "Local, offline builds",
     trust3: "Integrate in 5 minutes",
@@ -264,7 +266,7 @@ const en = {
     tagline: "Build-time code protection and license delivery for Python and Java.",
     product: "Product",
     product1: "Capabilities",
-    product2: "How it works",
+    product2: "Build lab",
     product3: "Security",
     product4: "Pricing",
     resources: "Resources",

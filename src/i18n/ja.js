@@ -17,7 +17,9 @@ const ja = {
     backToTop: "ページ上部へ戻る"
   },
   nav: {
+    docs: "ドキュメント",
     product: "製品",
+    lab: "暗号化ビルド",
     capabilities: "機能",
     how: "仕組み",
     security: "セキュリティ",
@@ -31,7 +33,7 @@ const ja = {
     title2: "ソースは渡さない。",
     lead: "CodeShield は、Python と Java アプリケーションに、ビルド時暗号化・実行時復号・Ed25519 署名ライセンスを一つの仕組みで提供します。クラスとモジュールはディスク上で常に暗号文のまま。ライセンスは独立して発行され、更新はファイル 1 つの差し替えで完了します。",
     ctaPrimary: "14 日間の無料トライアルを開始",
-    ctaSecondary: "実行フローを見る",
+    ctaSecondary: "暗号化ビルドを開く",
     trust1: "クレジットカード不要",
     trust2: "ローカル・オフラインビルド",
     trust3: "5 分で導入",
@@ -264,7 +266,7 @@ const ja = {
     tagline: "Python と Java のための、ビルド時コード保護とライセンス納品。",
     product: "製品",
     product1: "機能",
-    product2: "仕組み",
+    product2: "暗号化ビルド",
     product3: "セキュリティ",
     product4: "料金",
     resources: "リソース",

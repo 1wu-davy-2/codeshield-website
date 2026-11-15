@@ -117,13 +117,15 @@ export function I18nProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute("lang", HTML_LANG[lang] || lang);
     const meta = dict.meta || {};
+    // The docs view sets a page-level title; keep it while it is mounted.
+    const docsMounted = Boolean(document.querySelector(".docs-root"));
     if (meta.title) {
-      document.title = meta.title;
+      if (!docsMounted) document.title = meta.title;
       setMeta('meta[property="og:title"]', meta.title);
       setMeta('meta[name="twitter:title"]', meta.title);
     }
     if (meta.description) {
-      setMeta('meta[name="description"]', meta.description);
+      if (!docsMounted) setMeta('meta[name="description"]', meta.description);
       setMeta('meta[property="og:description"]', meta.description);
       setMeta('meta[name="twitter:description"]', meta.description);
     }

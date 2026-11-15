@@ -5,20 +5,20 @@ import { Icon } from "./ui.jsx";
 
 const NAV_ITEMS = [
   { id: "product", key: "nav.product" },
+  { id: "lab", key: "nav.lab", href: "#/lab" },
+  { id: "docs", key: "nav.docs", href: "#/docs" },
   { id: "capabilities", key: "nav.capabilities" },
-  { id: "how", key: "nav.how" },
   { id: "security", key: "nav.security" },
   { id: "pricing", key: "nav.pricing" },
   { id: "faq", key: "nav.faq" }
 ];
 
 const SCAN_ITEMS = [
-  ...NAV_ITEMS,
-  { id: "flow", nav: "product" },
+  ...NAV_ITEMS.filter((item) => !item.href),
   { id: "workspace", nav: "product" }
 ];
 
-export default function Header() {
+export default function Header({ view = "site" }) {
   const { t, lang, setLang, languages, mailto } = useI18n();
   const { toggleTheme } = useTheme();
   const [langOpen, setLangOpen] = useState(false);
@@ -37,6 +37,10 @@ export default function Header() {
     const update = () => {
       ticking = false;
       setScrolled(window.scrollY > 8);
+      if (view !== "site") {
+        setActive(view === "lab" ? "lab" : "docs");
+        return;
+      }
       const header = document.querySelector(".site-header");
       const offset = (header?.offsetHeight || 72) + 120;
       let nextActive = "";
@@ -63,7 +67,7 @@ export default function Header() {
       window.removeEventListener("scroll", request);
       window.removeEventListener("resize", request);
     };
-  }, []);
+  }, [view]);
 
   useEffect(() => {
     if (!langOpen) return undefined;
@@ -150,7 +154,10 @@ export default function Header() {
 
   return (
     <>
-      <header className={`site-header${scrolled ? " is-scrolled" : ""}`} id="siteHeader">
+      <header
+        className={`site-header${scrolled ? " is-scrolled" : ""}${view === "lab" ? " is-lab" : ""}${view === "docs" ? " is-docs" : ""}`}
+        id="siteHeader"
+      >
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label="CodeShield">
             <span className="brand-mark">
@@ -165,7 +172,7 @@ export default function Header() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href || `#${item.id}`}
                 className={active === item.id ? "is-active" : undefined}
                 onClick={closeMobile}
               >
@@ -239,7 +246,7 @@ export default function Header() {
               type="button"
               aria-expanded={mobileOpen}
               aria-controls="mobileNav"
-              aria-label={t("common.menu")}
+              aria-label={mobileOpen ? t("common.close") : t("common.menu")}
               ref={navToggleRef}
               onClick={() => setMobileOpen((open) => !open)}
             >
@@ -254,7 +261,12 @@ export default function Header() {
         <div className="mobile-nav" id="mobileNav" ref={mobileNavRef}>
           <nav aria-label={t("common.mobileNav")}>
             {NAV_ITEMS.map((item) => (
-              <a key={item.id} href={`#${item.id}`} onClick={closeMobile}>
+              <a
+                key={item.id}
+                href={item.href || `#${item.id}`}
+                className={active === item.id ? "is-active" : undefined}
+                onClick={closeMobile}
+              >
                 {t(item.key)}
               </a>
             ))}

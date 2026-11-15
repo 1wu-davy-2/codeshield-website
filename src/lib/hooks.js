@@ -14,7 +14,7 @@ export function useTheme() {
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme;
     const meta = document.getElementById("metaThemeColor");
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#060b16" : "#f7faff");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#06090d" : "#f3f6f8");
   }, [theme]);
 
   useEffect(() => {
@@ -66,12 +66,12 @@ export function useDocumentTheme() {
 
 export function useReveal() {
   useEffect(() => {
-    const items = Array.from(document.querySelectorAll(".reveal:not(.is-visible)"));
+    const items = Array.from(document.querySelectorAll('.reveal:not([data-revealed="true"])'));
     if (!items.length) return undefined;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduceMotion.matches || !("IntersectionObserver" in window)) {
-      items.forEach((item) => item.classList.add("is-visible"));
+      items.forEach((item) => item.setAttribute("data-revealed", "true"));
       return undefined;
     }
 
@@ -79,7 +79,7 @@ export function useReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
+          entry.target.setAttribute("data-revealed", "true");
           observer.unobserve(entry.target);
         });
       },

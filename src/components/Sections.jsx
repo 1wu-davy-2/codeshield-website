@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useI18n } from "../i18n/index.jsx";
+import ImageLightbox from "./ImageLightbox.jsx";
 import { useDocumentTheme } from "../lib/hooks.js";
 import { CopyButton, Icon, SectionHead, handleSpotlight } from "./ui.jsx";
 
@@ -305,7 +306,7 @@ function ProductHubCard({ id, data, activeProduct, setActiveProduct }) {
         ))}
       </div>
       <div className="phc-actions">
-        <a href="#flow" className="phc-link primary" onClick={() => setActiveProduct(id)}>
+        <a href={`#/lab/${id}`} className="phc-link primary" onClick={() => setActiveProduct(id)}>
           <Icon name="arrow-right" className="icon icon-xs" />
           {t("productHub.flowCta")}
         </a>
@@ -624,7 +625,7 @@ function MockWorkspace({ product }) {
   );
 }
 
-function WorkspacePreview({ product }) {
+function WorkspacePreview({ product, onZoom }) {
   const { t } = useI18n();
   const theme = useDocumentTheme();
   const base = `${import.meta.env.BASE_URL}assets/img/product/${product}-workbench`;
@@ -656,8 +657,23 @@ function WorkspacePreview({ product }) {
     setFailed(true);
   };
 
+  const zoomable = loaded && !failed;
+
+  const openZoom = () => {
+    if (!zoomable) return;
+    onZoom({
+      src,
+      alt,
+      caption: t(product === "python" ? "ui.pythonCaption" : "ui.javaCaption")
+    });
+  };
+
   return (
-    <div className={`shot-frame ${product}`} data-theme={theme}>
+    <div
+      className={`shot-frame ${product}${zoomable ? " is-zoomable" : ""}`}
+      data-theme={theme}
+      onClick={openZoom}
+    >
       <MockWorkspace product={product} />
       {failed ? null : (
         <img
@@ -669,12 +685,27 @@ function WorkspacePreview({ product }) {
           onError={handleError}
         />
       )}
+      {zoomable ? (
+        <button
+          className="shot-zoom"
+          type="button"
+          aria-label={`${t("ui.zoom")} — ${alt}`}
+          onClick={(event) => {
+            event.stopPropagation();
+            openZoom();
+          }}
+        >
+          <Icon name="expand" className="icon icon-xs" />
+          <span>{t("ui.zoom")}</span>
+        </button>
+      ) : null}
     </div>
   );
 }
 
 export function OperationUI({ setActiveProduct }) {
   const { t } = useI18n();
+  const [zoom, setZoom] = useState(null);
   return (
     <section className="section ui-section" id="workspace">
       <div className="container">
@@ -689,11 +720,11 @@ export function OperationUI({ setActiveProduct }) {
                 </span>
                 <span className="shot-card-route">BUILD → LICENSE → SHIP</span>
               </div>
-              <WorkspacePreview product={product} />
+              <WorkspacePreview product={product} onZoom={setZoom} />
               <div className="shot-meta">
                 <h3>{t(product === "python" ? "ui.pythonCaption" : "ui.javaCaption")}</h3>
                 <a
-                  href="#flow"
+                  href={`#/lab/${product}`}
                   className="phc-link"
                   onClick={() => setActiveProduct(product)}
                 >
@@ -706,6 +737,7 @@ export function OperationUI({ setActiveProduct }) {
         </div>
         <p className="shot-note reveal">{t("ui.previewNote")}</p>
       </div>
+      <ImageLightbox item={zoom} onClose={() => setZoom(null)} />
     </section>
   );
 }
