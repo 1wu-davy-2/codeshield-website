@@ -25,7 +25,8 @@ const ja = {
     security: "セキュリティ",
     pricing: "料金",
     faq: "FAQ",
-    trial: "無料トライアル"
+    trial: "無料トライアル",
+    contact: "お問い合わせ",
   },
   hero: {
     badge: "Python × Java · ビルド時暗号化 · 実行時復号",

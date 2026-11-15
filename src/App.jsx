@@ -19,6 +19,7 @@ import { BackToTop, Footer, LegalDialog, Toast } from "./components/Footer.jsx";
 
 // The docs bundle carries eight pages of prose; load it only when requested.
 const DocsPage = lazy(() => import("./docs/DocsPage.jsx"));
+const ContactPage = lazy(() => import("./components/ContactPage.jsx"));
 
 function getRoute() {
   const hash = window.location.hash || "";
@@ -33,6 +34,9 @@ function getRoute() {
       pageId: isDocsPage(pageId) ? pageId : "index",
       anchor: anchor ? decodeURIComponent(anchor) : ""
     };
+  }
+  if (hash.startsWith("#/contact")) {
+    return { view: "contact", product: null };
   }
   if (hash.startsWith("#/lab")) {
     const product = hash.split("/")[2] === "java" ? "java" : "python";
@@ -113,6 +117,8 @@ function Shell() {
     toastTimer.current = window.setTimeout(() => setToast(""), 2200);
   }, []);
 
+  const onSoon = useCallback(() => showToast(t("toast.soon")), [showToast, t]);
+
   const onCopy = useCallback(
     async (text, isEmail) => {
       await copyToClipboard(text);
@@ -151,10 +157,17 @@ function Shell() {
         </Suspense>
       ) : route.view === "lab" ? (
         <LabPage initialProduct={route.product} onCopy={onCopy} />
+      ) : route.view === "contact" ? (
+        <>
+          <Suspense fallback={<div className="page-loading" />}>
+            <ContactPage />
+          </Suspense>
+          <Footer onCopy={onCopy} onSoon={onSoon} onLegal={setLegal} />
+        </>
       ) : (
         <Marketing
           onCopy={onCopy}
-          onSoon={() => showToast(t("toast.soon"))}
+          onSoon={onSoon}
           onLegal={setLegal}
         />
       )}

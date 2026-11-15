@@ -25,7 +25,8 @@ const zh = {
     security: "安全边界",
     pricing: "定价",
     faq: "常见问题",
-    trial: "免费试用"
+    trial: "免费试用",
+    contact: "联系商务",
   },
   hero: {
     badge: "Python × Java · 构建期加密 · 运行期解密",

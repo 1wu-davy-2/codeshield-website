@@ -47,7 +47,7 @@ export function Footer({ onCopy, onSoon, onLegal }) {
 
         <div className="footer-col">
           <h4>{t("footer.company")}</h4>
-          <a href="mailto:hello@codeshield.dev">{t("footer.company1")}</a>
+          <a href="#/contact">{t("footer.company1")}</a>
           <button type="button" className="footer-link" onClick={() => onLegal("privacy")}>
             {t("footer.company2")}
           </button>

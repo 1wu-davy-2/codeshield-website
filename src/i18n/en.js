@@ -25,7 +25,8 @@ const en = {
     security: "Security",
     pricing: "Pricing",
     faq: "FAQ",
-    trial: "Start free trial"
+    trial: "Start free trial",
+    contact: "Contact",
   },
   hero: {
     badge: "Python × Java · Build-time encryption · Runtime decryption",

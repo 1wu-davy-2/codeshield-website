@@ -10,7 +10,8 @@ const NAV_ITEMS = [
   { id: "capabilities", key: "nav.capabilities" },
   { id: "security", key: "nav.security" },
   { id: "pricing", key: "nav.pricing" },
-  { id: "faq", key: "nav.faq" }
+  { id: "faq", key: "nav.faq" },
+  { id: "contact", key: "nav.contact", href: "#/contact" }
 ];
 
 const SCAN_ITEMS = [
@@ -38,7 +39,7 @@ export default function Header({ view = "site" }) {
       ticking = false;
       setScrolled(window.scrollY > 8);
       if (view !== "site") {
-        setActive(view === "lab" ? "lab" : "docs");
+        setActive(view);
         return;
       }
       const header = document.querySelector(".site-header");

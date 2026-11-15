@@ -26,6 +26,7 @@ src/components/             Header / Hero / 各内容区块 / Footer / 弹窗
 src/i18n/                   中、英、日、韩四份词典与语言 Provider
 src/lib/hooks.js            主题、滚动 reveal、剪贴板等
 src/lib/labData.js          文件对照快照加载与基础校验
+src/lib/contact.js          商务联系页内容配置（留空即渲染占位块）
 src/components/LabFileExplorer.jsx 左右文件树、逐文件前后对照
 src/components/LabPage.jsx   独立「加密构建」工作台页面
 src/labForm.css             工作台表单与标签页样式
@@ -144,6 +145,18 @@ python scripts/port-docs.py --source <docs-site 目录>
 - 主题复用官网的 `data-theme` 与 `localStorage["cs-theme"]`，文档不再单独保存主题。
 - 文档整包按需加载：`DocsPage` 走 `React.lazy`，正文与搜索索引不进营销页首屏 bundle（构建后独立的 `DocsPage-*.js` chunk）。
 - 文档页面不渲染营销页脚，改为文档自己的版本行与 GitHub 链接。
+
+## 商务联系页
+
+`#/contact`，顶部导航「联系商务」与页脚「联系我们」都指向这里。
+
+页面内容集中在一个配置文件里，改完即生效，不用动组件：
+
+- `src/lib/contact.js`：`email` / `wechat` / `phone` / `location` / `wechatQr`，以及 `experience`、`shots` 两个列表
+- 留空（`""` 或 `[]`）时，页面渲染虚线占位块与「待补充」标记；填上内容后自动切换成正式排版
+- 经历条目：`{ period, org, role, summary, points: [] }`；截图条目：`{ src, caption }`
+- 二维码与截图放在 `public/assets/img/contact/`，路径写相对 `public` 的地址，例如 `assets/img/contact/wechat-qr.png`
+- 页面按需加载（独立 `ContactPage-*.js` chunk），不占首屏体积
 
 ## GitHub Pages
 

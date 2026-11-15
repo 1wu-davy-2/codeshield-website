@@ -25,7 +25,8 @@ const ko = {
     security: "보안 경계",
     pricing: "가격",
     faq: "FAQ",
-    trial: "무료 체험"
+    trial: "무료 체험",
+    contact: "문의",
   },
   hero: {
     badge: "Python × Java · 빌드 시점 암호화 · 런타임 복호화",
