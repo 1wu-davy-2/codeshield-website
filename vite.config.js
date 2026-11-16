@@ -6,7 +6,7 @@ export default defineConfig({
   base: "./",
   server: {
     host: "127.0.0.1",
-    port: 12222,
+    port: 15222,
     strictPort: true,
     watch: {
       ignored: ["**/.qa/**", "**/legacy-static/**"]

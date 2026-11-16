@@ -14,7 +14,7 @@ export function useTheme() {
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme;
     const meta = document.getElementById("metaThemeColor");
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#06090d" : "#f3f6f8");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#06090d" : "#ffffff");
   }, [theme]);
 
   useEffect(() => {

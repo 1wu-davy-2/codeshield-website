@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useI18n } from "../i18n/index.jsx";
+import { GITHUB_RELEASES } from "../lib/links.js";
 import { Icon, SectionHead } from "./ui.jsx";
 
 const EDITIONS = [
@@ -28,6 +30,29 @@ const EDITIONS = [
 
 export function Pricing() {
   const { t, mailto } = useI18n();
+
+  // Arriving via the "start trial" CTAs lands on #pricing — flag the trial card briefly.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    let timer = null;
+    const flag = () => {
+      if (window.location.hash !== "#pricing") return;
+      const card = document.getElementById("pricing")?.querySelector(".price-card");
+      if (!card) return;
+      card.classList.remove("is-flash");
+      void card.offsetWidth;
+      card.classList.add("is-flash");
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => card.classList.remove("is-flash"), 1500);
+    };
+    flag();
+    window.addEventListener("hashchange", flag);
+    return () => {
+      window.removeEventListener("hashchange", flag);
+      window.clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <section className="section pricing-section" id="pricing">
       <div className="container">
@@ -54,9 +79,22 @@ export function Pricing() {
                 <span className="period">{t(`${edition.key}.period`)}</span>
               </div>
               <p className="price-desc">{t(`${edition.key}.desc`)}</p>
-              <a className={edition.ctaClass} href={mailto(edition.cta)}>
-                {t(`${edition.key}.cta`)}
-              </a>
+              {edition.id === "trial" ? (
+                <>
+                  <a className={edition.ctaClass} href="#/download">
+                    <Icon name="box" className="icon icon-sm" />
+                    {t(`${edition.key}.cta`)}
+                  </a>
+                  <a className="price-cta-note" href={GITHUB_RELEASES} target="_blank" rel="noreferrer">
+                    {t(`${edition.key}.otherPlatforms`)}
+                    <Icon name="arrow-up-right" className="icon icon-xs" />
+                  </a>
+                </>
+              ) : (
+                <a className={edition.ctaClass} href={mailto(edition.cta)}>
+                  {t(`${edition.key}.cta`)}
+                </a>
+              )}
               <ul className="price-features">
                 {edition.features.map((feature) => {
                   const isMuted = edition.id === "trial" && feature === 6;
@@ -131,7 +169,7 @@ export function FinalCTA({ onCopy }) {
             <h2>{t("cta.title")}</h2>
             <p>{t("cta.lead")}</p>
             <div className="cta-actions">
-              <a className="btn btn-white btn-lg" href={mailto("trial")}>
+              <a className="btn btn-white btn-lg" href="#pricing">
                 <span>{t("cta.primary")}</span>
                 <Icon name="arrow-right" className="icon icon-sm" />
               </a>

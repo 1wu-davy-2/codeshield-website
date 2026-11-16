@@ -16,10 +16,12 @@ import {
 } from "./components/Sections.jsx";
 import { FAQ, FinalCTA, Pricing } from "./components/Pricing.jsx";
 import { BackToTop, Footer, LegalDialog, Toast } from "./components/Footer.jsx";
+import ChatWidget from "./components/ChatWidget.jsx";
 
 // The docs bundle carries eight pages of prose; load it only when requested.
 const DocsPage = lazy(() => import("./docs/DocsPage.jsx"));
 const ContactPage = lazy(() => import("./components/ContactPage.jsx"));
+const DownloadPage = lazy(() => import("./components/DownloadPage.jsx"));
 
 function getRoute() {
   const hash = window.location.hash || "";
@@ -34,6 +36,9 @@ function getRoute() {
       pageId: isDocsPage(pageId) ? pageId : "index",
       anchor: anchor ? decodeURIComponent(anchor) : ""
     };
+  }
+  if (hash.startsWith("#/download")) {
+    return { view: "download", product: null };
   }
   if (hash.startsWith("#/contact")) {
     return { view: "contact", product: null };
@@ -134,7 +139,7 @@ function Shell() {
   }, []);
 
   useEffect(() => {
-    if (route.view === "lab") {
+    if (route.view === "lab" || route.view === "download") {
       window.scrollTo({ top: 0, behavior: "auto" });
     }
   }, [route.view, route.product]);
@@ -157,6 +162,13 @@ function Shell() {
         </Suspense>
       ) : route.view === "lab" ? (
         <LabPage initialProduct={route.product} onCopy={onCopy} />
+      ) : route.view === "download" ? (
+        <>
+          <Suspense fallback={<div className="page-loading" />}>
+            <DownloadPage />
+          </Suspense>
+          <Footer onCopy={onCopy} onSoon={onSoon} onLegal={setLegal} />
+        </>
       ) : route.view === "contact" ? (
         <>
           <Suspense fallback={<div className="page-loading" />}>
@@ -172,6 +184,7 @@ function Shell() {
         />
       )}
       <BackToTop />
+      <ChatWidget />
       <LegalDialog legal={legal} onClose={() => setLegal(null)} />
       <Toast message={toast} />
     </>

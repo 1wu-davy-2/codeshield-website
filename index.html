@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hans" data-theme="dark">
+<html lang="zh-Hans" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CodeShield — Python 与 Java 源码保护与授权交付</title>
   <meta id="metaDescription" name="description" content="CodeShield 以构建期加密、运行期解密与 Ed25519 签名许可证，为 Python 与 Java 应用提供可交付的代码保护。14 天免费试用。">
-  <meta id="metaThemeColor" name="theme-color" content="#06090d">
+  <meta id="metaThemeColor" name="theme-color" content="#ffffff">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/favicon.svg">
@@ -24,7 +24,7 @@
         var q = new URLSearchParams(location.search);
         var t = q.get('theme');
         if (t !== 'light' && t !== 'dark') t = localStorage.getItem('cs-theme');
-        if (t !== 'light' && t !== 'dark') t = 'dark';
+        if (t !== 'light' && t !== 'dark') t = 'light';
         document.documentElement.setAttribute('data-theme', t);
 
         var raw = q.get('lang');
@@ -109,6 +109,10 @@
     <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="m15.3 8.7-1.9 4.7-4.7 1.9 1.9-4.7 4.7-1.9Z"/></symbol>
     <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3.8 21 19.5H3L12 3.8Z"/><path d="M12 9v4.6M12 16.6v.1"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M8.5 5.5v13l10-6.5-10-6.5Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.6 4.5h14.8a1.6 1.6 0 0 1 1.6 1.6v8.6a1.6 1.6 0 0 1-1.6 1.6H10.4l-4.1 3.1a.55.55 0 0 1-.88-.44V16.3h-1A1.6 1.6 0 0 1 3 14.7V6.1a1.6 1.6 0 0 1 1.6-1.6Z"/><path d="M7.6 9.1h8.8M7.6 12.3h5.4"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.6 3.4 3.7 9.5l6.2 2.5 2.5 6.2 8.2-14.8Z"/><path d="m9.9 12 10.7-8.6"/></symbol>
+    <symbol id="i-windows" viewBox="0 0 24 24"><path d="M4 5.6 10.6 4.7v6.5H4Z"/><path d="M12.2 4.5 20 3.4v7.8h-7.8Z"/><path d="M4 12.9h6.6v6.5L4 18.4Z"/><path d="M12.2 12.9H20V20l-7.8-1.1Z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.1 12.4c0-2 1.6-3 1.7-3.1-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.4-.6 2.6-.6s1.6.6 2.6.6c1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.4 1.1-2.4-.1 0-2.3-1-2.3-2.9Z"/><path d="M14.4 6.3c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.2-.5.5-.9 1.4-.8 2.3.9.1 1.8-.5 2.3-1.1Z"/></symbol>
   </svg>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>

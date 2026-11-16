@@ -20,7 +20,7 @@ const SCAN_ITEMS = [
 ];
 
 export default function Header({ view = "site" }) {
-  const { t, lang, setLang, languages, mailto } = useI18n();
+  const { t, lang, setLang, languages } = useI18n();
   const { toggleTheme } = useTheme();
   const [langOpen, setLangOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -237,7 +237,7 @@ export default function Header({ view = "site" }) {
               <Icon name="moon" className="icon icon-moon" />
             </button>
 
-            <a className="btn btn-primary btn-sm header-cta" href={mailto("trial")}>
+            <a className="btn btn-primary btn-sm header-cta" href="#pricing">
               {t("nav.trial")}
             </a>
 
@@ -272,7 +272,7 @@ export default function Header({ view = "site" }) {
               </a>
             ))}
           </nav>
-          <a className="btn btn-primary btn-block" href={mailto("trial")} onClick={closeMobile}>
+          <a className="btn btn-primary btn-block" href="#pricing" onClick={closeMobile}>
             {t("nav.trial")}
           </a>
         </div>

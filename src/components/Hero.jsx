@@ -12,7 +12,7 @@ const SOURCE_LINES = [
 const CIPHER_LINES = ["9F2A 7C11 E84B 0D92", "A77E 31F0 5C2D 8B19", "0D4E F812 6A93 C701", "B28C 44D1 9E07 2F6A"];
 
 export default function Hero() {
-  const { t, mailto } = useI18n();
+  const { t } = useI18n();
 
   return (
     <section className="hero" id="top">
@@ -42,9 +42,9 @@ export default function Hero() {
               <span>{t("hero.ctaSecondary")}</span>
               <Icon name="arrow-right" className="icon icon-sm" />
             </a>
-            <a className="btn btn-ghost btn-lg" href={mailto("trial")}>
+            <a className="btn btn-ghost btn-lg" href="#pricing">
               <span>{t("hero.ctaPrimary")}</span>
-              <Icon name="arrow-up-right" className="icon icon-sm" />
+              <Icon name="arrow-right" className="icon icon-sm" />
             </a>
           </div>
           <ul className="hero-trust reveal" style={{ "--d": ".24s" }}>

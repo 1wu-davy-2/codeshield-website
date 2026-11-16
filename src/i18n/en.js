@@ -197,7 +197,8 @@ const en = {
       f3: "Core module & class encryption",
       f4: "Single-machine binding",
       f5: "Trial watermark on artifacts",
-      f6: "No native runtime, product license issuance or CI"
+      f6: "No native runtime, product license issuance or CI",
+      otherPlatforms: "Other platforms / all builds"
     },
     pro: {
       name: "Pro",
