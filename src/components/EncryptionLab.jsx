@@ -152,7 +152,9 @@ export default function EncryptionLab({ activeProduct, setActiveProduct, onCopy,
   const timers = useRef([]);
   const terminalRef = useRef(null);
   const shellRef = useRef(null);
+  const filesRef = useRef(null);
   const previousPanel = useRef(panel);
+  const previousStatus = useRef(status);
   const running = status === "running";
   const done = status === "done";
   const binding = bindingMode !== "none";
@@ -309,6 +311,24 @@ export default function EncryptionLab({ activeProduct, setActiveProduct, onCopy,
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? "auto" : "smooth" });
   }, [panel]);
+
+  // When the build finishes, walk the user down to the file-by-file comparison.
+  useEffect(() => {
+    const prev = previousStatus.current;
+    previousStatus.current = status;
+    if (status !== "done" || prev === "done") return undefined;
+
+    const timer = window.setTimeout(() => {
+      const node = filesRef.current;
+      if (!node) return;
+      const header = document.querySelector(".site-header");
+      const top = node.getBoundingClientRect().top + window.scrollY - (header?.offsetHeight || 0) - 26;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? "auto" : "smooth" });
+    }, 380);
+
+    return () => window.clearTimeout(timer);
+  }, [status]);
 
   const chooseProduct = (id) => {
     if (running) return;
@@ -678,6 +698,7 @@ export default function EncryptionLab({ activeProduct, setActiveProduct, onCopy,
 
                   {done ? <div className="lab-result">
                     <div className="result-banner" aria-live="polite"><div className="result-check"><Icon name="check" /></div><div><span>BUILD {activeBuildId}</span><h3>{t("lab.complete")}</h3></div><div className="result-summary"><span><small>{t("lab.protected")}</small><strong>{protectedCount}</strong></span><span><small>{t("lab.output")}</small><strong>{activeOutput}</strong></span><span><small>{t("lab.cipherLabel")}</small><strong>{activeAlgorithm}</strong></span><span><small>{t("lab.signature")}</small><strong className="verified">Ed25519 · VERIFIED</strong></span></div><button className="report-button" type="button" onClick={downloadReport}><Icon name="doc" className="icon icon-sm" />{t("lab.report")}</button></div>
+                    <div className="lab-result-body" ref={filesRef}>
                     {snapshotData ? (
                       <LabFileExplorer
                         key={`${product}-${snapshotBuild?.id || "snapshot"}`}
@@ -696,6 +717,7 @@ export default function EncryptionLab({ activeProduct, setActiveProduct, onCopy,
                         </div>
                       </>
                     )}
+                    </div>
                   </div> : null}
                 </>
               )}

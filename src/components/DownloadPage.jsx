@@ -3,6 +3,7 @@ import { useI18n } from "../i18n/index.jsx";
 import DOWNLOAD_COPY from "../i18n/download.js";
 import { GITHUB_RELEASES, PLATFORM_DOWNLOADS, SHA256SUMS } from "../lib/links.js";
 import { useReveal } from "../lib/hooks.js";
+import PortalPanel from "./PortalPanel.jsx";
 import { Icon } from "./ui.jsx";
 
 const PLATFORMS = ["windows", "linux", "macos"];
@@ -100,7 +101,9 @@ export default function DownloadPage() {
             })}
           </div>
 
-          <div className="download-verify reveal">
+          <PortalPanel />
+
+      <div className="download-verify reveal">
             <span className="download-verify-title">{copy.verifyTitle}</span>
             <a href={SHA256SUMS} target="_blank" rel="noreferrer">
               <Icon name="fingerprint" className="icon icon-xs" />

@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useI18n } from "../i18n/index.jsx";
 import { GITHUB_RELEASES } from "../lib/links.js";
+import UpgradeDialog from "./UpgradeDialog.jsx";
 import { Icon, SectionHead } from "./ui.jsx";
 
 const EDITIONS = [
@@ -30,6 +31,7 @@ const EDITIONS = [
 
 export function Pricing() {
   const { t, mailto } = useI18n();
+  const [upgradeEdition, setUpgradeEdition] = useState(null);
 
   // Arriving via the "start trial" CTAs lands on #pricing — flag the trial card briefly.
   useEffect(() => {
@@ -91,9 +93,13 @@ export function Pricing() {
                   </a>
                 </>
               ) : (
-                <a className={edition.ctaClass} href={mailto(edition.cta)}>
+                <button
+                  className={edition.ctaClass}
+                  type="button"
+                  onClick={() => setUpgradeEdition(edition.id === "pro" ? "pro" : "enterprise")}
+                >
                   {t(`${edition.key}.cta`)}
-                </a>
+                </button>
               )}
               <ul className="price-features">
                 {edition.features.map((feature) => {
@@ -120,6 +126,9 @@ export function Pricing() {
           ))}
         </div>
       </div>
+      {upgradeEdition ? (
+        <UpgradeDialog edition={upgradeEdition} onClose={() => setUpgradeEdition(null)} />
+      ) : null}
     </section>
   );
 }
